@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timeline · Project Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a18;
+      --muted: #6b6b68;
+      --rule: #ddddd8;
+      --bg: #faf9f7;
+      --accent: #2d5a3d;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+
+    nav .site-name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--ink); }
+    nav ul a.active { color: var(--ink); border-bottom: 1px solid var(--ink); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 720px;
+      margin: 3.5rem auto 2rem;
+      padding: 0 2rem;
+    }
+
+    .page-header .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    /* ── TIMELINE CONTAINER ── */
+    .timeline-wrapper {
+      max-width: 1100px;
+      margin: 2rem auto 4rem;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    /* 
+      HOW TO USE:
+      1. Go to https://timeline.knightlab.com
+      2. Fill in your Google Spreadsheet URL in Step 3
+      3. Copy the <iframe> embed code they generate
+      4. Replace the <iframe> below with your generated code
+    */
+    .timeline-wrapper iframe {
+      width: 100%;
+      height: 650px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      display: block;
+    }
+
+    /* Placeholder shown before you add your iframe */
+    .timeline-placeholder {
+      width: 100%;
+      height: 500px;
+      border: 2px dashed var(--rule);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .timeline-placeholder .ph-icon {
+      font-size: 2.5rem;
+      opacity: 0.3;
+    }
+
+    .timeline-placeholder strong {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .timeline-placeholder p {
+      font-size: 0.85rem;
+      text-align: center;
+      max-width: 340px;
+    }
+
+    .timeline-placeholder a {
+      color: var(--accent);
+    }
+
+    /* ── INSTRUCTIONS BLOCK ── */
+    .instructions {
+      max-width: 720px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+
+    .instructions h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .instructions ol {
+      padding-left: 1.3rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .instructions ol li {
+      margin-bottom: 0.4rem;
+    }
+
+    .instructions a { color: var(--accent); }
+
+    /* comment this out once you've added your real timeline */
+    /* .instructions { display: none; } */
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.5rem 2.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      nav ul { gap: 1.2rem; }
+      .page-header, .timeline-wrapper, .instructions { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .timeline-wrapper iframe { height: 480px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="site-name" href="index.html">Project Name</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="timeline.html" class="active">Timeline</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <p class="label">Timeline</p>
+    <h1>A Chronology of Events</h1>
+    <p>
+      Describe what this timeline covers — the span of time, the subject, 
+      and why the sequence of events matters.
+    </p>
+  </div>
+
+  <div class="timeline-wrapper">
+
+    <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQjrxChdZBckRR1EMoUBknRCb6gTstWNPZI6nTt3skZGNACLoKzr_Ac3gd2lD6t-0AE-2Uy1Rek2TKT&font=Default&lang=en&initial_zoom=2&width=100%25&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+
+  </div>
+
+
+  <footer>
+    &copy; 2025 Your Name &nbsp;·&nbsp; Built with GitHub Pages
+  </footer>
+
+</body>
+</html>
